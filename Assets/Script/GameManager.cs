@@ -28,14 +28,13 @@ public class GameManager : MonoBehaviour
             stopPIPE[i].GetComponent<MovePipe>().enabled = false;
         }
 
-        StartCoroutine(DelayActiveGameOverUI());
+        Invoke("DelayActiveGameOverUI", 1.5f);
 
         Debug.Log("GameOver");
     }
 
-    IEnumerator DelayActiveGameOverUI()
+    void  DelayActiveGameOverUI()
     {
-        yield return new WaitForSeconds(1.5f);
         gameOver.SetActive(true);
         score.SetActive(false);
         Time.timeScale = 0;

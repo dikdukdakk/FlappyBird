@@ -488,8 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d06a7655fb7729c488dd139c28d84640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startGame: {fileID: 2002931908}
   gameOver: {fileID: 0}
+  spawnerPIPE: {fileID: 0}
   score: {fileID: 0}
 --- !u!4 &936995603
 Transform:

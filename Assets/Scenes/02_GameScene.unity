@@ -823,7 +823,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 718526525}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.39, z: 0}
+  m_LocalPosition: {x: -2.01, y: 1.39, z: 0}
   m_LocalScale: {x: 6.356979, y: 6.356979, z: 6.356979}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1139,6 +1139,11 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Collision_PIPE
     clip: {fileID: 8300000, guid: 0375aeb1a8c9d2c44b66d17ca088ff58, type: 3}
+    volume: 0.262
+    pitch: 1
+    source: {fileID: 0}
+  - name: GetPoint
+    clip: {fileID: 8300000, guid: 0e306ef305ee52347944e684e3eb4640, type: 3}
     volume: 0.262
     pitch: 1
     source: {fileID: 0}

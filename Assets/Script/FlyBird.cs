@@ -6,7 +6,7 @@ using UnityEngine;
 public class FlyBird : MonoBehaviour
 {
     public GameManager current;     //GameManager Object
-    
+    bool isAlive;
 
     public float tabForce = 250;    //Tap to jump
     public float tiltSmooth = 2f;   //smooth jump
@@ -22,25 +22,34 @@ public class FlyBird : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         downRotation = Quaternion.Euler(0, 0, -45);
         forwardRotation = Quaternion.Euler(0, 0, 35);
+
+        //Bird is alive
+        isAlive = true;
         
     }
 
     void Update()
     {
-        //input click scene for control (tap to fly)
-        if (Input.GetMouseButtonDown(0))
+        //Bird is alive
+        if (isAlive == false)
+            return;
+        
+        //Bird is dead
+        else
         {
-            //Control
-            transform.rotation = forwardRotation;
-            rb.velocity = Vector3.zero;
-            rb.AddForce(Vector2.up * tabForce, ForceMode2D.Force);
+            //input click scene for control (tap to fly)
+            if (Input.GetMouseButtonDown(0))
+            {
+                //Control
+                transform.rotation = forwardRotation;
+                rb.velocity = Vector3.zero;
+                rb.AddForce(Vector2.up * tabForce, ForceMode2D.Force);
 
-            //Audio
-            FindObjectOfType<SoundManager>().PlaySound("TapControl");
+                //Audio
+                FindObjectOfType<SoundManager>().PlaySound("TapControl");
+            }
+            transform.rotation = Quaternion.Lerp(transform.rotation, downRotation, tiltSmooth * Time.deltaTime);
         }
-
-  
-        transform.rotation = Quaternion.Lerp(transform.rotation, downRotation, tiltSmooth * Time.deltaTime);
     }
 
 
@@ -56,6 +65,9 @@ public class FlyBird : MonoBehaviour
         //Audio
         FindObjectOfType<SoundManager>().PlaySound("Collision_PIPE");
 
+        //Bird is dead
+        isAlive = false;
+
     }
 
     //Trigger
@@ -70,7 +82,7 @@ public class FlyBird : MonoBehaviour
         Score.score++;
 
         //Audio
-        //FindObjectOfType<SoundManager>().PlaySound("Collision_PIPE");
+        FindObjectOfType<SoundManager>().PlaySound("GetPoint");
     }
 
 }
